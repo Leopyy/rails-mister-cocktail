@@ -2,8 +2,10 @@
   <h1>Create a brand new cocktail!</h1>
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name %>
-    <%= f.association :ingredient%>
-    <%= f.association :dose%>
     <%= f.submit "Add cocktail", class: "btn btn-danger" %>
-  <% end %><br><%= link_to "Back to list", cocktails_path, class: "btn btn-success"%>
+  <%end%><br><%= link_to "Back to list", cocktails_path, class: "btn btn-success"%>
 </div>
+
+
+<!-- IN THEORY WE MUST CREATE A LIST OF NEW DOSES USING THE INGREDIENTS!-->
+<!-- THEN CREATE A COCKTAIL USING THIS LIST!-->
