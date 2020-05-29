@@ -4,13 +4,19 @@
   </div>
 </div>
 
-<div class="container">
-  <ul>
-    <% @cocktails.each do |cocktail| %>
-      <li><div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://static.vinepair.com/wp-content/uploads/2020/04/<%cocktail.name%>.jpg)">
-  <%= link_to cocktail.name, cocktail_path(cocktail)%>
-</div></li>
-    <% end%>
-  </ul>
-  <%= link_to "Create Cocktail", new_cocktail_path, class: "btn btn-primary" %>
+<div class="cards p-4">
+  <% @cocktails.each do |cocktail| %>
+    <% if cocktail.image.attached? %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.image.key %>')">
+      <%= link_to cocktail.name, cocktail_path(cocktail)%>
+      </div>
+    <% else %>
+      <div class="card-category" style="background-color: black">
+      <%= link_to cocktail.name, cocktail_path(cocktail)%>
+      </div>
+    <% end %>
+  <% end%>
+</div>
+<div class="p-4">
+  <%= link_to "Create Cocktail", new_cocktail_path, class: "btn btn-dark" %>
 </div>
